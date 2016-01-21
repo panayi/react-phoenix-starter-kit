@@ -1,0 +1,22 @@
+@import 'base';
+@import 'vendor/normalize';
+
+html {
+  box-sizing: border-box;
+}
+
+:global html,
+:global body,
+:global #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--clr-darkest-grey);
+  color: var(--clr-base);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
