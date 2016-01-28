@@ -2,7 +2,7 @@
 ## Development
 Setup backend:
 
-```
+```bash
 cd api
 mix deps.get
 mix ecto.create
@@ -14,7 +14,7 @@ npm run dev
 
 Setup frontend:
 
-```
+```bash
 npm install
 npm run dev
 ```
