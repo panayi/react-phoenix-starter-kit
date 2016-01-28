@@ -47,13 +47,7 @@ export const login = request({
 })
 
 
-export const logout = request({
-  uuid: 'logout',
-  path: '/api/logout',
-  options: {
-    method: 'DELETE'
-  }
-})
+export const logout = () => [deleteToken(), authenticateFail()]
 
 // ------------------------------------
 // Reducer
