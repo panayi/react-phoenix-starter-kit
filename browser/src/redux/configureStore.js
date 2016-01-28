@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import credentials from 'redux-effects-credentials'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import { syncHistory } from 'react-router-redux'
 import effects from 'redux-effects'
 import fetch from 'redux-effects-fetch'
@@ -11,7 +11,7 @@ import { tokenSelector } from './selectors'
 import authenticate from './middleware/authenticate'
 import rootReducer from './rootReducer'
 
-export const history = hashHistory
+export const history = browserHistory
 
 const authenticatedApiRequest = RegExp(`${API_URL}\/api`)
 

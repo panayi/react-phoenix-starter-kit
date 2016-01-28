@@ -29,6 +29,7 @@ defmodule App.User do
     model
     |> changeset(params)
     |> cast(params, ~w(password), [])
+    |> validate_format(:email, ~r/\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/)
     |> validate_length(:password, min: 6, max: 100)
     |> put_pass_hash()
   end

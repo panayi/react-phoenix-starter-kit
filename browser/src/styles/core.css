@@ -18,3 +18,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+:global .navbar-nav > li > .active {
+  background-color: var(--clr-dark-base);
+}

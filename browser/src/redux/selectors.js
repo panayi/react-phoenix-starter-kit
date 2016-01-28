@@ -1,6 +1,17 @@
 import R from 'ramda'
 
 // ------------------------------------
+// Request
+// ------------------------------------
+const allRequestsSelector = R.prop('request')
+
+export const requestSelector = id =>
+  R.compose(
+    R.prop(id),
+    allRequestsSelector
+  )
+
+// ------------------------------------
 // Data
 // ------------------------------------
 
@@ -33,7 +44,7 @@ export const findSingleSelector = type =>
 // IsAuthenticated
 // ------------------------------------
 
-// isAuthenticatedSelector :: State -> Boolean
+// isAuthenticatedSelector :: State -> Boolean|null
 export const isAuthenticatedSelector = R.prop('isAuthenticated')
 
 // ------------------------------------
@@ -42,13 +53,6 @@ export const isAuthenticatedSelector = R.prop('isAuthenticated')
 
 // tokenSelector :: State -> String
 export const tokenSelector = R.prop('token')
-
-// hasTokenSelector :: State -> Boolean
-export const hasTokenSelector = R.compose(
-  R.not,
-  R.isEmpty,
-  tokenSelector
-)
 
 // ------------------------------------
 // Convenience selectors

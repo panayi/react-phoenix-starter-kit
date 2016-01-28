@@ -16,7 +16,7 @@ class LoggedInLinks extends Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/users">Users</Link></li>
+        <li><Link activeClassName="active" to="/users">Users</Link></li>
         <li className="dropdown">
           <a
             href="#"
@@ -29,6 +29,8 @@ class LoggedInLinks extends Component {
             {profile && profile.email} <span className="caret"></span>
           </a>
           <ul className="dropdown-menu">
+            <li><a>{profile && profile.name || 'Anonymous'}</a></li>
+            <li className="divider"></li>
             <li><a href="#" onClick={logout}>Logout</a></li>
           </ul>
         </li>

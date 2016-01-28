@@ -46,7 +46,6 @@ export const login = request({
   fail: [deleteToken, authenticateFail]
 })
 
-
 export const logout = () => [deleteToken(), authenticateFail()]
 
 // ------------------------------------

@@ -22,7 +22,8 @@ defmodule App.RegistrationController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", app_user_path(conn, :show, user))
-        |> render(App.SessionView, "show.json", %{token: Guardian.Plug.current_token(conn)})
+        |> render(App.SessionView, "show.json",
+          %{session: %{token: Guardian.Plug.current_token(conn)}, conn: conn, params: user_params})
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

@@ -79,17 +79,11 @@ export const findOne = (type, id) =>
 // ------------------------------------
 export default handleActions({
   [REQUEST_STARTED]: (state, { payload: { uuid } }) =>
-    R.compose(
-      R.dissoc([uuid, 'errors']),
-      R.assocPath([uuid, 'status'], 'loading')
-    )(state),
+    R.assoc(uuid, { isLoading: true }, state),
 
   [REQUEST_SUCCESS]: (state, { payload: { uuid } }) =>
-    R.assocPath([uuid, 'status'], 'completed', state),
+    R.assoc(uuid, { isSuccess: true }, state),
 
   [REQUEST_FAIL]: (state, { payload: { uuid, errors } }) =>
-    R.compose(
-      R.assocPath([uuid, 'errors'], errors),
-      R.assocPath([uuid, 'status'], 'failed')
-    )(state),
+    R.assoc(uuid, { isError: true, errors }, state)
 }, {})

@@ -10,7 +10,8 @@ defmodule App.SessionController do
 
         conn
         |> put_status(:created)
-        |> render(App.SessionView, "show.json", %{token: Guardian.Plug.current_token(conn)})
+        |> render(App.SessionView, "show.json",
+          %{session: %{token: Guardian.Plug.current_token(conn)}, conn: conn, params: session_params})
       :error ->
         conn
         |> put_status(422)

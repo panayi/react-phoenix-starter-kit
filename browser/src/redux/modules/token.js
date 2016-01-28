@@ -36,10 +36,11 @@ const deleteAttr = key => {
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const saveToken = ({ response: { data: { token } } }) => [
-  createAction(SAVE_TOKEN)(token),
-  setItem(LOCALSTORAGE_ROOT, updateAttr('token', token))
-]
+export const saveToken =
+  ({ response: { data: { attributes: { token } } } }) => [
+    createAction(SAVE_TOKEN)(token),
+    setItem(LOCALSTORAGE_ROOT, updateAttr('token', token))
+  ]
 
 export const deleteToken = () => [
   createAction(DELETE_TOKEN)(),

@@ -22,7 +22,8 @@ const withData = (state, data) =>
     R.merge(state),
     R.mapObjIndexed(
       (records, key) => combine(
-        R.map(R.prop('attributes'), records), state[key]
+        R.map(R.prop('attributes'), records),
+        state[key]
       )
     ),
     R.groupBy(R.prop('type')),

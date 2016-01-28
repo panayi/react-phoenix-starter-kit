@@ -4,14 +4,16 @@ import { createStructuredSelector } from 'reselect'
 import { goTo as _goTo } from 'redux/modules/routing'
 import { needsVisitor } from 'helpers/checkAuth'
 import { register as _register } from 'redux/modules/auth'
-import { isAuthenticatedSelector } from 'redux/selectors'
+import { isAuthenticatedSelector, requestSelector } from 'redux/selectors'
+import RequestErrors from 'components/RequestErrors'
 
 
 class UsersNew extends Component {
   static propTypes = {
     goTo: PropTypes.func,
     isAuthenticated: PropTypes.bool,
-    register: PropTypes.func
+    register: PropTypes.func,
+    request: PropTypes.object
   };
 
   constructor() {
@@ -32,9 +34,12 @@ class UsersNew extends Component {
   }
 
   render() {
+    const { request } = this.props
+
     return (
       <div className="container">
         <h1>New User</h1>
+        {request && <RequestErrors errors={request.errors} />}
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Name</label>
@@ -60,7 +65,8 @@ class UsersNew extends Component {
 }
 
 const selector = createStructuredSelector({
-  isAuthenticated: isAuthenticatedSelector
+  isAuthenticated: isAuthenticatedSelector,
+  request: requestSelector('register')
 })
 const actions = {
   goTo: _goTo,

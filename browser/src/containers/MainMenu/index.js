@@ -19,7 +19,7 @@ class MainMenu extends Component {
     const links = isAuthenticated ? <LoggedInLinks /> : <LoggedOutLinks />
 
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default navbar-static-top">
         <div className="container-fluid">
           <div className="navbar-header">
             <button
