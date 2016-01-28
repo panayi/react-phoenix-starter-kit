@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 import { profileSelector } from 'redux/selectors'
 import { logout as _logout } from 'redux/modules/auth'
 
@@ -15,7 +15,7 @@ class LoggedInLinks extends Component {
     const { logout, profile } = this.props
     return (
       <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/">Home</Link></li>
+        <li><IndexLink activeClassName="active" to="/">Home</IndexLink></li>
         <li><Link activeClassName="active" to="/users">Users</Link></li>
         <li className="dropdown">
           <a

@@ -19,6 +19,8 @@ html {
   box-sizing: inherit;
 }
 
-:global .navbar-nav > li > .active {
+:global .navbar-default .navbar-nav > li > .active,
+:global .navbar-default .navbar-nav > li > .active:focus,
+:global .navbar-default .navbar-nav > li > .active:hover {
   background-color: var(--clr-dark-base);
 }

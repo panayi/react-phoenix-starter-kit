@@ -34,7 +34,7 @@ class MainMenu extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">React + Phoenix</a>
+            <a className="navbar-brand" href="#">React Phoenix Starter Kit</a>
           </div>
           <div
             className="collapse navbar-collapse"
