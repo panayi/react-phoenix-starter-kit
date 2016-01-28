@@ -1,5 +1,5 @@
-defmodule Api.Session do
-  alias Api.User
+defmodule App.Session do
+  alias App.User
 
   def authenticate(params, repo) do
     user = repo.get_by(User, email: String.downcase(params["email"]))

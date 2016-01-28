@@ -1,5 +1,5 @@
-defmodule Api.ErrorView do
-  use Api.Web, :view
+defmodule App.ErrorView do
+  use App.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

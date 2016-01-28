@@ -1,3 +1,3 @@
-defmodule Api.LayoutView do
-  use Api.Web, :view
+defmodule App.LayoutView do
+  use App.Web, :view
 end

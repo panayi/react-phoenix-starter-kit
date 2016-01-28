@@ -1,3 +1,3 @@
-defmodule Api.PageView do
-  use Api.Web, :view
+defmodule App.PageView do
+  use App.Web, :view
 end

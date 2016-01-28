@@ -1,7 +1,7 @@
-defmodule Api.UserTest do
-  use Api.ModelCase
+defmodule App.UserTest do
+  use App.ModelCase
 
-  alias Api.User
+  alias App.User
 
   @valid_attrs %{email: "some content", username: "some content"}
   @invalid_attrs %{}

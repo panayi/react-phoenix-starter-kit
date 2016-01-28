@@ -1,8 +1,7 @@
-defmodule Api.User do
-  use Api.Web, :model
+defmodule App.User do
+  use App.Web, :model
 
   schema "users" do
-    field :username, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
@@ -10,7 +9,7 @@ defmodule Api.User do
     timestamps
   end
 
-  @required_fields ~w(username email)
+  @required_fields ~w(email)
   @optional_fields ~w()
 
   @doc """
@@ -22,9 +21,7 @@ defmodule Api.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> unique_constraint(:username)
     |> unique_constraint(:email)
-    |> validate_length(:username, min: 1, max: 20)
   end
 
   def registration_changeset(model, params) do

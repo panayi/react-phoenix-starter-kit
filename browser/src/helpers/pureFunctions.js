@@ -4,11 +4,14 @@ import R from 'ramda'
 // General
 // ------------------------------------
 
-// *log :: String -> String
-// const log = (xyz) => {
-//   console.log(xyz)
-//   return xyz
-// }
+// urlFor :: URL -> String -> URL
+export const urlFor = R.curry((base, path) =>
+  R.ifElse(
+    R.compose(R.equals('/'), R.head),
+    R.concat(base),
+    R.concat(`${base}/`)
+  )(path)
+)
 
 // invokeLater :: Number -> Number -> Function -> Function
 export const invokeLater = (arity, delay, callback) => {
@@ -24,21 +27,20 @@ export const invokeLater = (arity, delay, callback) => {
 export const mapIndexed = R.addIndex(R.map)
 
 // propsChanged :: String[] -> Object -> Object -> Boolean
-export const propsChanged = (propsArray, props, nextProps) => {
-  return R.useWith(R.compose(R.not, R.equals), [
+export const propsChanged = (propsArray, props, nextProps) =>
+  R.useWith(R.compose(R.not, R.equals), [
     R.pick(propsArray),
     R.pick(propsArray)
   ])(props, nextProps)
-}
 
 // ------------------------------------
 // Redux
 // ------------------------------------
 
-// dispatch -> Action -> Store -> ?
-export const dispatch = R.useWith(R.flip(R.call), [
-  R.identity,
-  R.prop('dispatch')
+// dispatch -> Store -> Action -> ?
+export const dispatch = R.useWith(R.call, [
+  R.prop('dispatch'),
+  R.identity
 ])
 
 // isActionOfType -> ActionType -> Action -> Boolean
