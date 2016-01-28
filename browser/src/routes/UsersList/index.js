@@ -39,7 +39,7 @@ class UsersList extends Component {
           <ul className="list-group">
             {users.map((user, index) =>
               <li key={index} className="list-group-item">
-                {user.email}
+                {user.email} {user.name ? `(${user.name})` : ''}
               </li>
             )}
           </ul>

@@ -14,7 +14,7 @@ defmodule App.RegistrationController do
         App.Endpoint.broadcast(
           "users:new",
           "new:user",
-          %{data: payload, type: "users"}
+          %{attributes: payload, type: "users"}
         )
 
         conn = Guardian.Plug.api_sign_in(conn, user, :token)

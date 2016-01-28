@@ -9,7 +9,7 @@ defmodule App.ApiController do
   def unauthenticated_api(conn, _params) do
     conn
     |> put_status(401)
-    |> render(App.ApiView, "error.json", %{
+    |> render(App.ErrorView, "error.json", %{
       id: "authenticate",
       title: "Unauthenticated access",
       detail: "Unable to process request due to failed authentication",

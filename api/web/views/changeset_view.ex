@@ -4,7 +4,8 @@ defmodule App.ChangesetView do
   def render("error.json", %{id: id, changeset: changeset}) do
     errors = Enum.map(changeset.errors, fn {field, detail} ->
       %{
-        id: "register",
+        id: id,
+        source: %{ pointer: "/data/attributes/#{field}" },
         title: "Invalid Attribute",
         detail: render_detail(detail)
       }

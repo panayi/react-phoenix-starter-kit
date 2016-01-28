@@ -14,7 +14,7 @@ defmodule App.SessionController do
       :error ->
         conn
         |> put_status(422)
-        |> render(App.ApiView, "error.json", %{
+        |> render(App.ErrorView, "error.json", %{
           id: "login",
           title: "Invalid credentials",
           detail: "The provided credentials do not match an existing user",

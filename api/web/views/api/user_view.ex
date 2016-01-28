@@ -1,15 +1,15 @@
 defmodule App.Api.UserView do
-  use App.Web, :view
+  use JSONAPI.PhoenixView
+  alias App.Api.UserView
 
-  def render("index.json", %{users: users}) do
-    %{data: render_many(users, App.Api.UserView, "user.json"), type: "users"}
+  def render("index.json", %{users: users, conn: conn, params: params}) do
+    UserView.index(users, conn, params)
   end
 
-  def render("show.json", %{user: user}) do
-    %{data: render_one(user, App.Api.UserView, "user.json"), type: "users"}
+  def render("show.json", %{user: user, conn: conn, params: params}) do
+    UserView.show(user, conn, params)
   end
 
-  def render("user.json", %{user: user}) do
-    %{id: user.id, email: user.email}
-  end
+  def fields(), do: [:id, :name, :email]
+  def type(), do: "users"
 end

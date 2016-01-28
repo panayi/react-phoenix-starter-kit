@@ -21,7 +21,9 @@ const withData = (state, data) =>
   R.compose(
     R.merge(state),
     R.mapObjIndexed(
-      (records, key) => combine(R.map(R.prop('data'), records), state[key])
+      (records, key) => combine(
+        R.map(R.prop('attributes'), records), state[key]
+      )
     ),
     R.groupBy(R.prop('type')),
     makeArray
@@ -31,8 +33,8 @@ const withData = (state, data) =>
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [REQUEST_SUCCESS]: (state, { payload: { response } }) =>
-    withData(state, response),
+  [REQUEST_SUCCESS]: (state, { payload: { response: { data } } }) =>
+    withData(state, data),
 
   [RECEIVED_MESSAGE]: (state, { payload: { message } }) =>
     withData(state, message)

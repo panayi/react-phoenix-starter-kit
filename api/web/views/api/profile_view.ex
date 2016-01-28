@@ -1,7 +1,11 @@
 defmodule App.Api.ProfileView do
-  use App.Web, :view
+  use JSONAPI.PhoenixView
+  alias App.Api.ProfileView
 
-  def render("show.json", %{user: user}) do
-    %{data: %{id: user.id, name: user.name, email: user.email}, type: "profile"}
+  def render("show.json", %{user: user, conn: conn, params: params}) do
+    ProfileView.show(user, conn, params)
   end
+
+  def fields(), do: [:id, :name, :email]
+  def type(), do: "profile"
 end

@@ -66,13 +66,13 @@ export const findAll = type =>
   request({
     uuid: type,
     path: `/api/${type}`,
-  })
+  })()
 
 export const findOne = (type, id) =>
   request({
     uuid: `${type}:${id}`,
     path: `/api/${type}/${id}`,
-  })
+  })()
 
 // ------------------------------------
 // Reducer

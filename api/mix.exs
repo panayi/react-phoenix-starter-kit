@@ -39,7 +39,8 @@ defmodule App.Mixfile do
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 1.6"},
      {:guardian, "~> 0.6.3"},
-     {:cors_plug, "~> 0.1.4"}]
+     {:cors_plug, "~> 0.1.4"},
+     {:jsonapi, "~> 0.1.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

@@ -3,14 +3,12 @@ defmodule App.Api.ProfileController do
 
   plug Guardian.Plug.EnsureAuthenticated, on_failure: { App.ApiController, :unauthenticated_api }
 
-  alias App.Profile
-
   def show(conn, params) do
     case Guardian.Plug.current_resource(conn) do
       nil ->
         conn
         |> put_status(404)
-        |> render(App.ApiView, "error.json", %{
+        |> render(App.ErrorView, "error.json", %{
           id: "profile.show",
           title: "User not found",
           detail: "Failed to retrieve current user",
@@ -19,7 +17,7 @@ defmodule App.Api.ProfileController do
       user ->
         conn
         |> put_status(:ok)
-        |> render("show.json", %{user: user})
+        |> render(App.Api.ProfileView, "show.json", %{user: user, conn: conn, params: params})
     end
   end
 end
