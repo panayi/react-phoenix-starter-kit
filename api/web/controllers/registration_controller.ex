@@ -10,7 +10,7 @@ defmodule App.RegistrationController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        payload = Map.take(user, [:id, :email])
+        payload = Map.take(user, [:id, :name, :email])
         App.Endpoint.broadcast(
           "users:new",
           "new:user",

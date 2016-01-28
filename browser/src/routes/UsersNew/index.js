@@ -23,9 +23,10 @@ class UsersNew extends Component {
     event.preventDefault()
 
     const { register } = this.props
+    const name = event.target.name.value
     const email = event.target.email.value
     const password = event.target.password.value
-    const data = { user: { email, password } }
+    const data = { user: { name, email, password } }
 
     register({ data })
   }
@@ -35,6 +36,10 @@ class UsersNew extends Component {
       <div className="container">
         <h1>New User</h1>
         <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Name</label>
+            <input type="text" name="name" className="form-control" />
+          </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="text" name="email" className="form-control email" />

@@ -2,6 +2,7 @@ defmodule App.User do
   use App.Web, :model
 
   schema "users" do
+    field :name, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
@@ -10,7 +11,7 @@ defmodule App.User do
   end
 
   @required_fields ~w(email)
-  @optional_fields ~w()
+  @optional_fields ~w(name)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
